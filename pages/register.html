@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | Seraphis</title>
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .form-card {
+      max-width: 480px;
+      margin: 120px auto 40px;
+      background: rgba(14,14,14,0.9);
+      padding: 35px;
+      border-radius: 20px;
+      border: 1px solid rgba(212,175,55,0.6);
+      box-shadow: 0 0 35px rgba(212,175,55,0.3);
+    }
+
+    .form-card h1 {
+      text-align: center;
+      color: #d4af37;
+      margin-bottom: 20px;
+    }
+
+    .form-card input,
+    .form-card select {
+      width: 100%;
+      padding: 12px 14px;
+      margin-top: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+    }
+
+    .team-title {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #ffd700;
+    }
+
+    .price-box {
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #111;
+      border: 1px dashed #d4af37;
+      text-align: center;
+      font-size: 16px;
+      color: #ffd700;
+    }
+
+    .form-card button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #d4af37, #ffd700);
+      color: #0e0e0e;
+      box-shadow: 0 0 25px rgba(212,175,55,0.7);
+    }
+
+    .hint {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-card">
+  <h1>Event Registration</h1>
+
+  <form id="registerForm">
+
+    <!-- MAIN CONTACT -->
+    <input type="text" id="name1" placeholder="Participant 1 (Required)" required>
+    <input type="text" id="college1" placeholder="College Name" required>
+    <input type="text" id="dept1" placeholder="Department" required>
+    <select id="year1" required>
+      <option value="">Select Year</option>
+      <option value="1st Year">1st Year</option>
+      <option value="2nd Year">2nd Year</option>
+      <option value="3rd Year">3rd Year</option>
+      <option value="4th Year">4th Year</option>
+    </select>
+    <input type="email" id="email" placeholder="Email (Team Contact)" required>
+    <input type="tel" id="phone" placeholder="Phone Number" required>
+
+    <!-- EVENT -->
+    <select id="event" required>
+      <option value="">Select Event</option>
+      <option value="CodeCraft Quiz">CodeCraft Quiz</option>
+      <option value="WebNOVA AI">WebNOVA AI</option>
+      <option value="Poster Bot">Poster Bot</option>
+      <option value="Comic Intelligence">Comic Intelligence</option>
+      <option value="Maze Solver">Maze Solver</option>
+      <option value="BrainByte Bash">BrainByte Bash</option>
+      <option value="Thinkify">Thinkify</option>
+      <option value="Code Relay">Code Relay</option>
+      <option value="Mismatch The Code">Mismatch The Code</option>
+      <option value="Tech Connections">Tech Connections</option>
+    </select>
+
+    <!-- TEAM -->
+    <div id="teamSection" style="display:none">
+      <div class="team-title">Team Members</div>
+      
+      <div id="teamMember2" style="display:none">
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #d4af37; opacity:0.7;">Participant 2</div>
+        <input type="text" id="name2" placeholder="Participant 2 (Optional)">
+        <input type="text" id="college2" placeholder="College Name">
+        <input type="text" id="dept2" placeholder="Department">
+        <select id="year2">
+          <option value="">Select Year</option>
+          <option value="1st Year">1st Year</option>
+          <option value="2nd Year">2nd Year</option>
+          <option value="3rd Year">3rd Year</option>
+          <option value="4th Year">4th Year</option>
+        </select>
+      </div>
+
+      <div id="teamMember3" style="display:none">
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #d4af37; opacity:0.7;">Participant 3</div>
+        <input type="text" id="name3" placeholder="Participant 3 (Optional)">
+        <input type="text" id="college3" placeholder="College Name">
+        <input type="text" id="dept3" placeholder="Department">
+        <select id="year3">
+          <option value="">Select Year</option>
+          <option value="1st Year">1st Year</option>
+          <option value="2nd Year">2nd Year</option>
+          <option value="3rd Year">3rd Year</option>
+          <option value="4th Year">4th Year</option>
+        </select>
+      </div>
+
+      <div id="teamMember4" style="display:none">
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #d4af37; opacity:0.7;">Participant 4</div>
+        <input type="text" id="name4" placeholder="Participant 4 (Optional)">
+        <input type="text" id="college4" placeholder="College Name">
+        <input type="text" id="dept4" placeholder="Department">
+        <select id="year4">
+          <option value="">Select Year</option>
+          <option value="1st Year">1st Year</option>
+          <option value="2nd Year">2nd Year</option>
+          <option value="3rd Year">3rd Year</option>
+          <option value="4th Year">4th Year</option>
+        </select>
+      </div>
+      <div class="hint" id="teamHint"></div>
+    </div>
+
+    <!-- PRICE -->
+    <div class="price-box" id="priceBox">
+      Select an event to see price
+    </div>
+
+    <button type="submit">Proceed to Payment</button>
+  </form>
+</div>
+
+<script>
+/* EVENT CONFIG (frontend reference only) */
+const eventConfig = {
+  "CodeCraft Quiz": {
+    type: "TEAM",
+    price: 150,
+    maxTeamSize: 2
+  },
+  "WebNOVA AI": {
+    type: "TEAM",
+    price: 200,
+    maxTeamSize: 2
+  },
+  "Poster Bot": {
+    type: "TEAM",
+    price: 100,
+    maxTeamSize: 2
+  },
+  "Comic Intelligence": {
+    type: "SOLO",
+    price: 100,
+    maxTeamSize: 1
+  },
+  "Maze Solver": {
+    type: "TEAM",
+    price: 250,
+    maxTeamSize: 2
+  },
+  "BrainByte Bash": {
+    type: "SOLO",
+    price: 150,
+    maxTeamSize: 1
+  },
+  "Thinkify": {
+    type: "TEAM",
+    price: 200,
+    maxTeamSize: 3
+  },
+  "Code Relay": {
+    type: "TEAM",
+    price: 250,
+    maxTeamSize: 3
+  },
+  "Mismatch The Code": {
+    type: "TEAM",
+    price: 150,
+    maxTeamSize: 2
+  },
+  "Tech Connections": {
+    type: "TEAM",
+    price: 100,
+    maxTeamSize: 3
+  }
+};
+
+const eventSelect = document.getElementById("event");
+const teamSection = document.getElementById("teamSection");
+const teamHint = document.getElementById("teamHint");
+const priceBox = document.getElementById("priceBox");
+
+const teamInputs = [
+  document.getElementById("name2"),
+  document.getElementById("name3"),
+  document.getElementById("name4")
+];
+
+const teamMembers = [
+  document.getElementById("teamMember2"),
+  document.getElementById("teamMember3"),
+  document.getElementById("teamMember4")
+];
+
+/* EVENT CHANGE */
+eventSelect.addEventListener("change", updateForm);
+
+function updateForm() {
+  const event = eventSelect.value;
+  const config = eventConfig[event];
+
+  if (!config) {
+    teamSection.style.display = "none";
+    priceBox.innerText = "Select an event to see price";
+    return;
+  }
+  // persist amount so payment page can read it directly
+  localStorage.setItem("amount", config.price);
+
+  priceBox.innerText = `Registration Fee: ₹${config.price}`;
+
+  if (config.type === "SOLO") {
+    teamSection.style.display = "none";
+    teamInputs.forEach(i => i.value = "");
+  } else {
+    teamSection.style.display = "block";
+
+    teamMembers.forEach((member, index) => {
+      const maxMembers = config.maxTeamSize - 1;
+      member.style.display = index < maxMembers ? "block" : "none";
+      
+      // Clear team member inputs
+      const name = document.getElementById(`name${index + 2}`);
+      const college = document.getElementById(`college${index + 2}`);
+      const dept = document.getElementById(`dept${index + 2}`);
+      const year = document.getElementById(`year${index + 2}`);
+      if (name) name.value = "";
+      if (college) college.value = "";
+      if (dept) dept.value = "";
+      if (year) year.value = "";
+    });
+
+    teamHint.innerText = `Team size: up to ${config.maxTeamSize} members`;
+  }
+}
+
+/* PREFILL FROM EVENTS PAGE */
+window.addEventListener("DOMContentLoaded", () => {
+  const storedEvent = localStorage.getItem("event");
+  if (storedEvent) {
+    // ensure option exists
+    const exists = Array.from(eventSelect.options).some(o => o.value === storedEvent);
+    if (!exists) {
+      const opt = document.createElement("option");
+      opt.value = storedEvent;
+      opt.text = storedEvent;
+      eventSelect.appendChild(opt);
+    }
+    eventSelect.value = storedEvent;
+    updateForm();
+  }
+
+  const storedName = localStorage.getItem("name");
+  if (storedName) document.getElementById("name1").value = storedName;
+  const storedEmail = localStorage.getItem("email");
+  if (storedEmail) document.getElementById("email").value = storedEmail;
+  const storedPhone = localStorage.getItem("phone");
+  if (storedPhone) document.getElementById("phone").value = storedPhone;
+
+  // Restore team data if available
+  const storedTeam = localStorage.getItem("team");
+  if (storedTeam) {
+    try {
+      const team = JSON.parse(storedTeam);
+      if (team[0]) {
+        document.getElementById("college1").value = team[0].college || "";
+        document.getElementById("dept1").value = team[0].dept || "";
+        document.getElementById("year1").value = team[0].year || "";
+      }
+      
+      for (let i = 1; i < team.length; i++) {
+        const member = team[i];
+        const nameEl = document.getElementById(`name${i + 1}`);
+        if (nameEl) {
+          nameEl.value = member.name || "";
+          document.getElementById(`college${i + 1}`).value = member.college || "";
+          document.getElementById(`dept${i + 1}`).value = member.dept || "";
+          document.getElementById(`year${i + 1}`).value = member.year || "";
+        }
+      }
+    } catch (e) {}
+  }
+});
+
+/* SUBMIT */
+document.getElementById("registerForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const event = eventSelect.value;
+  const config = eventConfig[event];
+
+  if (!config) {
+    alert("Please select an event");
+    return;
+  }
+
+  // Build team array with full details
+  const team = [
+    {
+      name: document.getElementById("name1").value,
+      college: document.getElementById("college1").value,
+      dept: document.getElementById("dept1").value,
+      year: document.getElementById("year1").value
+    }
+  ];
+
+  // Add team members if they exist
+  for (let i = 2; i <= 4; i++) {
+    const nameEl = document.getElementById(`name${i}`);
+    if (nameEl && nameEl.value.trim()) {
+      team.push({
+        name: nameEl.value,
+        college: document.getElementById(`college${i}`).value,
+        dept: document.getElementById(`dept${i}`).value,
+        year: document.getElementById(`year${i}`).value
+      });
+    }
+  }
+
+  localStorage.setItem("name", document.getElementById("name1").value);
+  localStorage.setItem("email", document.getElementById("email").value);
+  localStorage.setItem("phone", document.getElementById("phone").value);
+  localStorage.setItem("event", event);
+  localStorage.setItem("team", JSON.stringify(team));
+  localStorage.setItem("amount", config.price);
+
+  window.location.href = "payment.html";
+});
+</script>
+
+</body>
+</html>

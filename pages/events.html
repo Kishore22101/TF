@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <title>Events | TechFest</title>
   <link rel="stylesheet" href="../style.css">
+  <style>
+    .event-meta { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; color:#ddd; font-size:14px; align-items:center; }
+    .event-meta .meta-item { background:rgba(255,255,255,0.02); padding:6px 10px; border-radius:8px; display:inline-flex; gap:8px; align-items:center; border:1px solid rgba(212,175,55,0.06); }
+    .event-meta .meta-icon { font-size:16px; }
+    .event-meta .meta-strong { color:#d4af37; font-weight:700; }
+  </style>
 </head>
 <body>
 
@@ -34,427 +40,217 @@
   <a href="developers.html" onclick="closeMenu()">Developers</a>
 </div>
 
-  <!-- Events Section -->
-  <section class="page-content">
-    <h1>Technical Events</h1>
+<!-- EVENTS -->
+<section class="page-content">
+  <h1>Technical Events</h1>
 
-    <div class="event-grid">
+  <div class="event-grid">
 
-      <!-- EVENT 1 -->
-      <div class="event-card"
-        onclick="openModal(
-          'CodeCraft Quiz',
-          'A competitive technical quiz focusing on Python and Java fundamentals.',
-          '👥 Team: 1–2 Members<br>🎯 Slots: 80 Teams<br>💰 Entry Fee: ₹150 / Team<br>🏆 Cash Prize: ₹3,000',
-          'https://docs.google.com/forms/d/e/1FAIpQLSegbkIYLt8LL6t_FNuImTubvbmvUU_9IZ-fjsXHvAPuvOmL_Q/viewform?usp=header'
-        )">
-        <div class="event-poster">
-          <img src="../posters/codecraft.png" alt="CodeCraft Quiz">
-        </div>
-        <h2>CodeCraft Quiz</h2>
-        <p>A multi-level technical quiz testing Python & Java fundamentals.</p>
+    <!-- 1 -->
+    <div class="event-card" onclick="openModal(
+      'CodeCraft Quiz',
+      'A competitive technical quiz focusing on Python and Java fundamentals.',
+      ' Team: 1–2 Members<br>🎯 Slots: 80 Teams<br>💰 Entry Fee: ₹150 / Team<br>🏆 Cash Prize: ₹3,000'
+    )">
+      <div class="event-poster"><img src="../posters/codecraft.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹3,000</span></div>
+      <h2>CodeCraft Quiz</h2>
+      <p>A multi-level technical quiz testing Python & Java fundamentals.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👥</span>Team • Max: 80 Teams</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 20–21, 2026</span>
       </div>
-
-      <!-- EVENT 2 -->
-      <div class="event-card"
-        onclick="openModal(
-          'WebNOVA AI',
-          'Design and present an innovative web solution based on a given theme.',
-          '👥 Team: 1–2 Members<br>🎯 Slots: 20 Teams<br>💰 Entry Fee: ₹200 / Team<br>🏆 Cash Prize: ₹4,000',
-          'https://docs.google.com/forms/d/e/1FAIpQLSegbkIYLt8LL6t_FNuImTubvbmvUU_9IZ-fjsXHvAPuvOmL_Q/viewform?usp=header'
-        )">
-        <div class="event-poster">
-          <img src="../posters/webnova.png" alt="WebNOVA AI">
-        </div>
-        <h2>WebNOVA AI</h2>
-        <p>Design an innovative web page based on an AI-driven theme.</p>
-      </div>
-
-      <!-- EVENT 3 -->
-      <div class="event-card"
-        onclick="openModal(
-          'Poster Bot',
-          'On-spot poster designing event focused on AI and emerging technologies.',
-          '👥 Team: 1–2 Members<br>🎯 Slots: 80 Teams<br>💰 Entry Fee: ₹100 / Team<br>🏆 Cash Prize: ₹2,500',
-          'https://forms.gle/YOUR_POSTERBOT_FORM'
-        )">
-        <div class="event-poster">
-          <img src="../posters/posterbot.png" alt="Poster Bot">
-        </div>
-        <h2>Poster Bot</h2>
-        <p>On-spot poster designing event based on AI & technology.</p>
-      </div>
-
-      <!-- EVENT 4 -->
-      <div class="event-card"
-        onclick="openModal(
-          'Comic Intelligence',
-          'Create smart and creative memes based on tech-related themes.',
-          '👤 Solo Event<br>🎯 Slots: 50 Participants<br>💰 Entry Fee: ₹100<br>🏆 Cash Prize: ₹2,000',
-          'https://forms.gle/YOUR_COMIC_FORM'
-        )">
-        <div class="event-poster">
-          <img src="../posters/comic.png" alt="Comic Intelligence">
-        </div>
-        <h2>Comic Intelligence</h2>
-        <p>Create smart and creative memes based on tech themes.</p>
-      </div>
-
-      <!-- EVENT 5 -->
-      <div class="event-card"
-        onclick="openModal(
-          'Maze Solver',
-          'Autonomous robotics challenge using intelligent navigation algorithms.',
-          '👥 Team: 1–2 Members<br>🎯 Slots: 30 Teams<br>💰 Entry Fee: ₹250 / Team<br>🏆 Cash Prize: ₹5,000',
-          'https://forms.gle/YOUR_MAZE_FORM'
-        )">
-        <div class="event-poster">
-          <img src="../posters/maze.png" alt="Maze Solver">
-        </div>
-        <h2>Maze Solver</h2>
-        <p>Autonomous robotics challenge using smart algorithms.</p>
-      </div>
-
-      <!-- EVENT 6 -->
-      <div class="event-card"
-        onclick="openModal(
-          'BrainByte Bash',
-          'Fast-paced competitive coding battles using Python or Java.',
-          '👤 Solo Event<br>🎯 Slots: 40 Participants<br>💰 Entry Fee: ₹150<br>🏆 Cash Prize: ₹3,500',
-          'https://forms.gle/YOUR_BRAINBYTE_FORM'
-        )">
-        <div class="event-poster">
-          <img src="../posters/brainbyte.png" alt="BrainByte Bash">
-        </div>
-        <h2>BrainByte Bash</h2>
-        <p>Fast-paced competitive coding battles using Python or Java.</p>
-      </div>
-      <!-- 7 -->
-<div class="event-card" onclick="openModal(
-'Thinkify',
-'An exciting multi-skill technical game combining logic, memory, and rapid thinking.',
-'👥 Team: 2–3 Members<br>🎯 Slots: 40 Teams<br>💰 Entry Fee: ₹200 / Team<br>🏆 Cash Prize: ₹4,000',
-'https://forms.gle/THINKIFY_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/thinkify.png">
-  </div>
-  <h2>Thinkify</h2>
-  <p>Test your logic, memory, and technical knowledge.</p>
-</div>
-
-<!-- 8 -->
-<div class="event-card" onclick="openModal(
-'Code Relay',
-'A collaborative coding challenge where teamwork and coordination matter.',
-'👥 Team: 3 Members<br>🎯 Slots: 30 Teams<br>💰 Entry Fee: ₹250 / Team<br>🏆 Cash Prize: ₹5,000',
-'https://forms.gle/CODERELAY_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/coderelay.png">
-  </div>
-  <h2>Code Relay</h2>
-  <p>Build code collaboratively in a relay-style challenge.</p>
-</div>
-
-<!-- 9 -->
-<div class="event-card" onclick="openModal(
-'Mismatch The Code',
-'A fun and challenging logical coding arrangement event.',
-'👥 Team: 2 Members<br>🎯 Slots: 30 Teams<br>💰 Entry Fee: ₹150 / Team<br>🏆 Cash Prize: ₹3,000',
-'https://forms.gle/MISMATCH_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/mismatch.png">
-  </div>
-  <h2>Mismatch The Code</h2>
-  <p>Arrange and fix logical code sequences under pressure.</p>
-</div>
-
-<!-- 10 -->
-<div class="event-card" onclick="openModal(
-'Tech Connections',
-'Identify technical concepts by connecting visual and logical clues.',
-'👥 Team Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹100 / Team<br>🏆 Cash Prize: ₹2,500',
-'https://forms.gle/TECHCONNECT_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/techconnections.png">
-  </div>
-  <h2>Tech Connections</h2>
-  <p>Connect clues to unlock technical concepts.</p>
-</div>
-
-<!-- 11 -->
-<div class="event-card" onclick="openModal(
-'Page Craft',
-'Design a creative and innovative website with strong presentation skills.',
-'👥 Team: Up to 3 Members<br>🎯 Slots: 20 Teams<br>💰 Entry Fee: ₹300 / Team<br>🏆 Cash Prize: ₹5,000',
-'https://forms.gle/PAGECRAFT_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/pagecraft.png">
-  </div>
-  <h2>Page Craft</h2>
-  <p>Showcase your creativity through web design.</p>
-</div>
-
-<!-- 12 -->
-<div class="event-card" onclick="openModal(
-'Resume Showcase',
-'Present your resume for professional evaluation and interview exposure.',
-'👤 Solo Event<br>🎯 Slots: 30 Participants<br>💰 Entry Fee: ₹100<br>🏆 Cash Prize: ₹2,000',
-'https://forms.gle/RESUME_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/resume.png">
-  </div>
-  <h2>Resume Showcase</h2>
-  <p>Get your resume evaluated by industry experts.</p>
-</div>
-
-<!-- 13 -->
-<div class="event-card" onclick="openModal(
-'MindMesh',
-'Aptitude and logical reasoning challenge to test your thinking speed.',
-'👤 Solo Event<br>🎯 Slots: 50 Participants<br>💰 Entry Fee: ₹100<br>🏆 Cash Prize: ₹2,500',
-'https://forms.gle/MINDMESH_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/mindmesh.png">
-  </div>
-  <h2>MindMesh</h2>
-  <p>Test your aptitude and logical reasoning skills.</p>
-</div>
-
-<!-- 14 -->
-<div class="event-card" onclick="openModal(
-'Idea Matrix',
-'Present innovative solutions with algorithms and system designs.',
-'👥 Team: 3 Members<br>🎯 Slots: 15 Teams<br>💰 Entry Fee: ₹300 / Team<br>🏆 Cash Prize: ₹6,000',
-'https://forms.gle/IDEAMATRIX_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/ideamatrix.png">
-  </div>
-  <h2>Idea Matrix</h2>
-  <p>Pitch innovative ideas with structured problem-solving.</p>
-</div>
-
-<!-- ================= CYBER SECURITY EVENTS ================= -->
-
-<!-- 15 -->
-<div class="event-card" onclick="openModal(
-'Capture the Flag (CTF)',
-'A competitive cyber security challenge involving cryptography, web security, and networking.',
-'👥 Team Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹300 / Team<br>🏆 Cash Prize: ₹6,000',
-'https://forms.gle/CTF_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/ctf.png">
-  </div>
-  <h2>Capture the Flag</h2>
-  <p>Solve cyber challenges and capture hidden flags.</p>
-</div>
-
-<!-- 16 -->
-<div class="event-card" onclick="openModal(
-'Phishing Detective',
-'Identify fake emails, messages, and websites in real-world phishing scenarios.',
-'👤 Solo Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹100<br>🏆 Cash Prize: ₹2,000',
-'https://forms.gle/PHISHING_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/phishing.png">
-  </div>
-  <h2>Phishing Detective</h2>
-  <p>Detect phishing attempts and protect users.</p>
-</div>
-
-<!-- 17 -->
-<div class="event-card" onclick="openModal(
-'Debugging',
-'Find and fix errors or vulnerabilities in given code snippets.',
-'👤 Solo Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹150<br>🏆 Cash Prize: ₹2,500',
-'https://forms.gle/DEBUG_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/debugging.png">
-  </div>
-  <h2>Debugging</h2>
-  <p>Identify and resolve bugs and security flaws.</p>
-</div>
-
-<!-- 18 -->
-<div class="event-card" onclick="openModal(
-'Hit the Buzzer',
-'A fast-paced quiz on cyber security concepts and incidents.',
-'👤 Solo / Team Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹100<br>🏆 Cash Prize: ₹2,000',
-'https://forms.gle/BUZZER_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/buzzer.png">
-  </div>
-  <h2>Hit the Buzzer</h2>
-  <p>Answer cyber security questions at lightning speed.</p>
-</div>
-
-<!-- 19 -->
-<div class="event-card" onclick="openModal(
-'Nano Narrative',
-'Create a short awareness video on cyber security and digital ethics.',
-'👥 Team / Solo<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹200<br>🏆 Cash Prize: ₹3,000',
-'https://forms.gle/NANO_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/nanonarrative.png">
-  </div>
-  <h2>Nano Narrative</h2>
-  <p>Short films spreading cyber security awareness.</p>
-</div>
-
-<!-- 20 -->
-<div class="event-card" onclick="openModal(
-'Cyber Escape Room',
-'An interactive cyber puzzle-solving escape challenge.',
-'👥 Team Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹250 / Team<br>🏆 Cash Prize: ₹4,000',
-'https://forms.gle/ESCAPE_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/escape.png">
-  </div>
-  <h2>Cyber Escape Room</h2>
-  <p>Solve cyber puzzles to escape before time runs out.</p>
-</div>
-
-<!-- 21 -->
-<div class="event-card" onclick="openModal(
-'Digital Forensic Hunt',
-'Analyze digital evidence to uncover hidden cyber clues.',
-'👤 Solo Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹150<br>🏆 Cash Prize: ₹2,500',
-'https://forms.gle/FORENSIC_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/forensic.png">
-  </div>
-  <h2>Digital Forensic Hunt</h2>
-  <p>Investigate digital artifacts like a cyber detective.</p>
-</div>
-
-<!-- 22 -->
-<div class="event-card" onclick="openModal(
-'Steganography Challenge',
-'Hide or extract secret messages from digital media.',
-'👤 Solo / Team<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹150<br>🏆 Cash Prize: ₹3,000',
-'https://forms.gle/STEG_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/steganography.png">
-  </div>
-  <h2>Steganography Challenge</h2>
-  <p>Discover hidden data inside images and files.</p>
-</div>
-
-<!-- 23 -->
-<div class="event-card" onclick="openModal(
-'Data Heist',
-'Simulated cyber attack scenario focusing on data protection.',
-'👥 Team Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹250 / Team<br>🏆 Cash Prize: ₹4,500',
-'https://forms.gle/DATAHEIST_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/dataheist.png">
-  </div>
-  <h2>Data Heist</h2>
-  <p>Secure or retrieve sensitive data under attack.</p>
-</div>
-
-<!-- 24 -->
-<div class="event-card" onclick="openModal(
-'Guess the Tool',
-'Identify cyber security tools based on clues and demos.',
-'👤 Solo Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹100<br>🏆 Cash Prize: ₹2,000',
-'https://forms.gle/TOOL_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/guessthetool.png">
-  </div>
-  <h2>Guess the Tool</h2>
-  <p>Recognize popular cyber security tools.</p>
-</div>
-
-<!-- 25 -->
-<div class="event-card" onclick="openModal(
-'Connections (Picture Connect)',
-'Connect images to identify cyber security concepts.',
-'👤 Solo / Team<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹100<br>🏆 Cash Prize: ₹2,000',
-'https://forms.gle/CONNECTIONS_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/connections.png">
-  </div>
-  <h2>Connections</h2>
-  <p>Link pictures to uncover cyber concepts.</p>
-</div>
-
-<!-- 26 -->
-<div class="event-card" onclick="openModal(
-'Figma UI/UX',
-'Design cyber-themed secure and user-friendly interfaces.',
-'👤 Solo Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹200<br>🏆 Cash Prize: ₹3,500',
-'https://forms.gle/FIGMA_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/figma.png">
-  </div>
-  <h2>Figma</h2>
-  <p>Create cyber security UI/UX designs.</p>
-</div>
-
-<!-- 27 -->
-<div class="event-card" onclick="openModal(
-'Innovathon',
-'Propose innovative solutions to real-world cyber security challenges.',
-'👥 Team Event<br>🎯 Slots: Limited<br>💰 Entry Fee: ₹300 / Team<br>🏆 Cash Prize: ₹6,000',
-'https://forms.gle/INNOVATHON_FORM'
-)">
-  <div class="event-poster">
-    <img src="../posters/innovathon.png">
-  </div>
-  <h2>Innovathon</h2>
-  <p>Pitch innovative cyber security ideas.</p>
-</div>
-
-
     </div>
-  </section>
 
-  <!-- MODAL -->
-  <div id="eventModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">×</span>
-      <h2 id="modalTitle"></h2>
-      <p id="modalDesc"></p>
-      <div id="modalDetails" class="modal-details"></div>
-      <a id="modalRegister" href="#" target="_blank" class="modal-register">
-        Register Now
-      </a>
+    <!-- 2 -->
+    <div class="event-card" onclick="openModal(
+      'WebNOVA AI',
+      'Design and present an innovative web solution based on a given theme.',
+      '👥 Team: 1–2 Members<br>🎯 Slots: 20 Teams<br>💰 Entry Fee: ₹200 / Team<br>🏆 Cash Prize: ₹4,000'
+    )">
+      <div class="event-poster"><img src="../posters/webnova.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹4,000</span></div>
+      <h2>WebNOVA AI</h2>
+      <p>Design an innovative web page based on an AI-driven theme.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👥</span>Team • Max: 20 Teams</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 20–21, 2026</span>
+      </div>
     </div>
+
+    <!-- 3 -->
+    <div class="event-card" onclick="openModal(
+      'Poster Bot',
+      'On-spot poster designing event focused on AI and emerging technologies.',
+      ' Team: 1–2 Members<br>🎯 Slots: 80 Teams<br>💰 Entry Fee: ₹100 / Team<br>🏆 Cash Prize: ₹2,500'
+    )">
+      <div class="event-poster"><img src="../posters/posterbot.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹2,500</span></div>
+      <h2>Poster Bot</h2>
+      <p>On-spot poster designing event based on AI & technology.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👥</span>Team • Max: 80 Teams</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 20–21, 2026</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="event-card" onclick="openModal(
+      'Comic Intelligence',
+      'Create smart and creative memes based on tech-related themes.',
+      ' Solo Event<br>🎯 Slots: 50 Participants<br>💰 Entry Fee: ₹100<br>🏆 Cash Prize: ₹2,000'
+    )">
+      <div class="event-poster"><img src="../posters/comic.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹2,000</span></div>
+      <h2>Comic Intelligence</h2>
+      <p>Create smart and creative memes based on tech themes.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👤</span>Solo • Max: 50 Participants</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 20, 2026</span>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="event-card" onclick="openModal(
+      'Maze Solver',
+      'Autonomous robotics challenge using intelligent navigation algorithms.',
+      ' Team: 1–2 Members<br>🎯 Slots: 30 Teams<br>💰 Entry Fee: ₹250 / Team<br>🏆 Cash Prize: ₹5,000'
+    )">
+      <div class="event-poster"><img src="../posters/maze.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹5,000</span></div>
+      <h2>Maze Solver</h2>
+      <p>Autonomous robotics challenge using smart algorithms.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👥</span>Team • Max: 30 Teams</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 20–21, 2026</span>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="event-card" onclick="openModal(
+      'BrainByte Bash',
+      'Fast-paced competitive coding battles using Python or Java.',
+      ' Solo Event<br>🎯 Slots: 40 Participants<br>💰 Entry Fee: ₹150<br>🏆 Cash Prize: ₹3,500'
+    )">
+      <div class="event-poster"><img src="../posters/brainbyte.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹3,500</span></div>
+      <h2>BrainByte Bash</h2>
+      <p>Fast-paced competitive coding battles.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👤</span>Solo • Max: 40 Participants</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 20, 2026</span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="event-card" onclick="openModal(
+      'Thinkify',
+      'An exciting multi-skill technical game.',
+      ' Team: 2–3 Members<br>🎯 Slots: 40 Teams<br>💰 Entry Fee: ₹200 / Team<br>🏆 Cash Prize: ₹4,000'
+    )">
+      <div class="event-poster"><img src="../posters/thinkify.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹4,000</span></div>
+      <h2>Thinkify</h2>
+      <p>Test your logic, memory, and knowledge.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👥</span>Team • Max: 40 Teams (2–3 members)</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 20–21, 2026</span>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="event-card" onclick="openModal(
+      'Code Relay',
+      'Collaborative relay-style coding challenge.',
+      '👥 Team: 3 Members<br>🎯 Slots: 30 Teams<br>💰 Entry Fee: ₹250 / Team<br>🏆 Cash Prize: ₹5,000'
+    )">
+      <div class="event-poster"><img src="../posters/coderelay.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹5,000</span></div>
+      <h2>Code Relay</h2>
+      <p>Team-based relay coding challenge.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👥</span>Team • Max: 30 Teams (3 members)</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 21, 2026</span>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="event-card" onclick="openModal(
+      'Mismatch The Code',
+      'Logical coding arrangement event.',
+      ' Team: 2 Members<br>🎯 Slots: 30 Teams<br>💰 Entry Fee: ₹150 / Team<br>🏆 Cash Prize: ₹3,000'
+    )">
+      <div class="event-poster"><img src="../posters/mismatch.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹3,000</span></div>
+      <h2>Mismatch The Code</h2>
+      <p>Arrange and fix code sequences.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👥</span>Team • Max: 30 Teams</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 20, 2026</span>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="event-card" onclick="openModal(
+      'Tech Connections',
+      'Identify technical concepts from clues.',
+      '👥 Team Event<br>💰 Entry Fee: ₹100 / Team<br>🏆 Cash Prize: ₹2,500'
+    )">
+      <div class="event-poster"><img src="../posters/techconnections.png"><span class="prize-badge"><span class="prize-icon">🏆</span>₹2,500</span></div>
+      <h2>Tech Connections</h2>
+      <p>Connect clues to concepts.</p>
+      <div class="event-meta">
+        <span class="meta-item"><span class="meta-icon">📍</span><span class="meta-strong">JNNIE</span></span>
+        <span class="meta-item"><span class="meta-icon">👥</span>Team • Max: —</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>Feb 20–21, 2026</span>
+      </div>
+    </div>
+
   </div>
+</section>
 
-  <script>
-    function openModal(title, desc, details, link) {
-      document.getElementById("modalTitle").innerHTML = title;
-      document.getElementById("modalDesc").innerHTML = desc;
-      document.getElementById("modalDetails").innerHTML = details;
-      document.getElementById("modalRegister").href = link;
-      document.getElementById("eventModal").style.display = "flex";
-    }
+<!-- MODAL -->
+<div id="eventModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <div id="modalDetails" class="modal-details"></div>
 
-    function closeModal() {
-      document.getElementById("eventModal").style.display = "none";
-    }
-  </script>
+    <button class="modal-register" onclick="goToRegister()">
+      Register Now
+    </button>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+let selectedEvent = "";
+
+function openModal(title, desc, details) {
+  selectedEvent = title;
+  document.getElementById("modalTitle").innerHTML = title;
+  document.getElementById("modalDesc").innerHTML = desc;
+  document.getElementById("modalDetails").innerHTML = details;
+  document.getElementById("eventModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("eventModal").style.display = "none";
+}
+
+function goToRegister() {
+  localStorage.setItem("event", selectedEvent);
+  window.location.href = "register.html";
+}
+
+function openMenu() {
+  document.getElementById("mobileMenu").style.right = "0";
+}
+function closeMenu() {
+  document.getElementById("mobileMenu").style.right = "-100%";
+}
+</script>
 
 </body>
 </html>

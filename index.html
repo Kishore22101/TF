@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TechFest 2026</title>
+  <title>Seraphis 2026</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
   <div class="logo">
     <img src="college-logo.png" alt="College Logo">
@@ -26,7 +26,7 @@
   </ul>
 </nav>
 
-<!-- MOBILE MENU -->
+<!-- ================= MOBILE MENU ================= -->
 <div id="mobileMenu" class="mobile-menu">
   <span class="close-menu" onclick="closeMenu()">×</span>
 
@@ -37,27 +37,35 @@
   <a href="pages/developers.html" onclick="closeMenu()">Developers</a>
 </div>
 
-<!-- HERO SECTION -->
+<!-- ================= HERO SECTION ================= -->
 <section class="hero">
 
+  <!-- Background Video -->
   <video autoplay muted loop playsinline class="bg-video">
     <source src="blue-bg.mp4" type="video/mp4">
   </video>
 
+  <!-- Overlay -->
   <div class="overlay"></div>
 
+  <!-- Hero Card -->
   <div class="hero-card">
     <span class="fest-tag">ANNUAL NATIONAL LEVEL TECH FEST</span>
 
-    <h1>TECHFEST <span>2026</span></h1>
+    <h1>SERAPHIS <span>2026</span></h1>
 
     <div class="divider"></div>
 
     <p class="tagline">Innovate • Inspire • Ignite</p>
 
-    <!-- REGISTER BUTTON -->
-    <button class="register-btn" onclick="openRegister()">Register Now</button>
+    <!-- ✅ REGISTER BUTTON (SHOW SMALL MODAL) -->
+    <button
+      class="register-btn"
+      onclick="openRegisterModal()">
+      Register Now
+    </button>
 
+    <!-- Event Info -->
     <div class="event-info">
       <div class="date-box">
         📅 February 20 – 21, 2026
@@ -67,47 +75,50 @@
   </div>
 </section>
 
-<!-- REGISTER POPUP -->
-<div id="registerModal" class="register-modal">
-  <div class="register-box">
-    <span class="close-btn" onclick="closeRegister()">×</span>
-    <h2>Register For</h2>
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>Instagram: <span>@yourcollege</span></p>
+  <p>College Mail: <span>college@gmail.com</span></p>
+  <p>Seraphis Queries: <span>techfest@gmail.com</span></p>
+  <p class="copyright">© 2026 JNN Institute of Engineering</p>
+</footer>
 
-    <div class="register-options">
-      <a href="pages/events.html">🎯 Events</a>
-      <a href="pages/workshops.html">🛠 Workshops</a>
-      <a href="pages/expo.html">🏛 Expo</a>
+<!-- ================= REGISTER CHOOSER MODAL (SMALL) ================= -->
+<div id="registerModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:1200; justify-content:center; align-items:center;">
+  <div style="width:360px; max-width:92%; background:linear-gradient(180deg,#0e0e0e,#0b1115); border:1px solid rgba(212,175,55,0.25); padding:20px; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,0.6); color:#fff; position:relative;">
+    <button onclick="closeRegisterModal()" style="position:absolute; right:12px; top:8px; background:transparent; border:none; color:#fff; font-size:20px; cursor:pointer;">×</button>
+    <h3 style="color:#d4af37; text-align:center; margin-top:4px;">Register</h3>
+    <p style="text-align:center; color:#ccc; margin-bottom:12px;">Choose where you'd like to register</p>
+
+    <div style="display:flex; gap:10px; flex-direction:column;">
+      <a href="pages/events.html" onclick="closeRegisterModal()" style="display:block; text-align:center; padding:10px 12px; border-radius:8px; background:#111; color:#ffd700; text-decoration:none; font-weight:700;">Events</a>
+      <a href="pages/workshops.html" onclick="closeRegisterModal()" style="display:block; text-align:center; padding:10px 12px; border-radius:8px; background:#111; color:#ffd700; text-decoration:none; font-weight:700;">Workshops</a>
+      <a href="pages/expo.html" onclick="closeRegisterModal()" style="display:block; text-align:center; padding:10px 12px; border-radius:8px; background:#111; color:#ffd700; text-decoration:none; font-weight:700;">Expo</a>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <p>Instagram: <span>@yourcollege</span></p>
-  <p>College Mail: <span>college@gmail.com</span></p>
-  <p>TechFest Queries: <span>techfest@gmail.com</span></p>
-  <p class="copyright">© 2026 JNN Institute of Engineering</p>
-</footer>
-
-<!-- TIMER SCRIPT -->
+<!-- ================= TIMER SCRIPT ================= -->
 <script src="script.js"></script>
 
-<!-- POPUP + HAMBURGER SCRIPT -->
+<!-- ================= MOBILE MENU SCRIPT ================= -->
 <script>
-  /* Register popup */
-  function openRegister() {
-    document.getElementById("registerModal").style.display = "flex";
-  }
-  function closeRegister() {
-    document.getElementById("registerModal").style.display = "none";
-  }
-
-  /* Mobile menu */
   function openMenu() {
     document.getElementById("mobileMenu").style.right = "0";
   }
+
   function closeMenu() {
     document.getElementById("mobileMenu").style.right = "-100%";
+  }
+  
+  function openRegisterModal() {
+    const m = document.getElementById('registerModal');
+    if (m) m.style.display = 'flex';
+  }
+
+  function closeRegisterModal() {
+    const m = document.getElementById('registerModal');
+    if (m) m.style.display = 'none';
   }
 </script>
 

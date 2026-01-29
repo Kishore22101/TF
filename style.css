@@ -239,6 +239,73 @@ copyright {
   margin: 0 15px 15px;
 }
 
+/* Better layout inside event cards */
+.event-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card .event-poster {
+  flex: 0 0 auto;
+}
+
+/* Prize badge on top-right of poster */
+.event-poster {
+  position: relative;
+}
+
+.prize-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg,#d4af37,#ffd700);
+  color: #0e0e0e;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(212,175,55,0.35);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.prize-badge.small { padding:4px 8px; font-size:12px; border-radius:14px; }
+
+/* trophy icon inside prize badge */
+.prize-badge .prize-icon {
+  margin-right: 6px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.event-card h2, .event-card p {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* Meta chips layout */
+.event-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 15px 18px;
+}
+
+.event-meta .meta-item {
+  flex: 0 1 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+}
+
+.event-meta .meta-item .meta-icon {
+  font-size: 16px;
+}
+
+
 .event-details {
   padding: 15px;
   border-top: 1px solid rgba(212,175,55,0.3);
@@ -481,4 +548,43 @@ copyright {
   .hamburger {
     display: block;
   }
+}
+
+/* ================= REGISTRATION FORM CARD ================= */
+
+.form-card {
+  background: #111;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid #d4af37;
+  max-width: 450px;
+  margin: 40px auto;
+}
+
+.form-card h2 {
+  color: #d4af37;
+  text-align: center;
+}
+
+.form-card input,
+.form-card select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+}
+
+.form-card input:focus,
+.form-card select:focus {
+  outline: 2px solid #d4af37;
+}
+
+.price-tag {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #ffd700;
+  text-align: center;
+  font-weight: bold;
 }

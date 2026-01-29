@@ -1,0 +1,22 @@
+{
+  "CodeCraft Quiz": {
+    "type": "SOLO",
+    "price": 150,
+    "maxTeamSize": 1
+  },
+  "WebNOVA AI": {
+    "type": "TEAM",
+    "price": 300,
+    "maxTeamSize": 3
+  },
+  "Hackathon": {
+    "type": "TEAM",
+    "price": 500,
+    "maxTeamSize": 4
+  },
+  "Poster Bot": {
+    "type": "SOLO",
+    "price": 100,
+    "maxTeamSize": 1
+  }
+}

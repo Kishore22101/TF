@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel | TechFest</title>
+
+  <!-- LOGIN + ROLE PROTECTION -->
+  <script>
+    const isAdmin = sessionStorage.getItem("admin");
+    const role = sessionStorage.getItem("role");
+
+    if (!isAdmin) {
+      window.location.href = "login.html";
+    }
+
+    // SCANNER should not access admin panel
+    if (role === "SCANNER") {
+      window.location.href = "scan.html";
+    }
+  </script>
+
+  <style>
+    body {
+      background:#0b1c2d;
+      color:white;
+      font-family:sans-serif;
+      padding:20px;
+    }
+    table {
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+    }
+    th, td {
+      padding:10px;
+      border:1px solid #d4af37;
+      text-align:center;
+    }
+    th {
+      background:#111;
+    }
+    .top-bar {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    button {
+      padding:10px 18px;
+      background:#d4af37;
+      border:none;
+      font-weight:bold;
+      cursor:pointer;
+      border-radius:6px;
+    }
+    .role-tag {
+      font-size:14px;
+      opacity:0.8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div>
+    <h1>📋 TechFest Registrations</h1>
+    <div class="role-tag">Role: <b id="roleText"></b></div>
+  </div>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Event</th>
+      <th>Payment ID</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody id="data"></tbody>
+</table>
+
+<script>
+document.getElementById("roleText").innerText =
+  sessionStorage.getItem("role") || "-";
+
+function logout() {
+  sessionStorage.clear();
+  window.location.href = "login.html";
+}
+
+fetch("http://localhost:5000/admin/registrations")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("data");
+    tbody.innerHTML = "";
+
+    if (!data || data.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6">No registrations yet</td>
+        </tr>
+      `;
+      return;
+    }
+
+    data.forEach(r => {
+      tbody.innerHTML += `
+        <tr>
+          <td>${r.name}</td>
+          <td>${r.email}</td>
+          <td>${r.phone}</td>
+          <td>${r.event}</td>
+          <td>${r.paymentId}</td>
+          <td>${r.time}</td>
+        </tr>
+      `;
+    });
+  });
+</script>
+
+</body>
+</html>

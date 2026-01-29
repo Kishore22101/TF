@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Verify | TechFest</title>
+
+  <!-- LOGIN + ROLE PROTECTION -->
+  <script>
+    const isAdmin = sessionStorage.getItem("admin");
+    const role = sessionStorage.getItem("role");
+
+    if (!isAdmin) {
+      window.location.href = "login.html";
+    }
+
+    // VIEWER cannot scan QR
+    if (role === "VIEWER") {
+      window.location.href = "admin.html";
+    }
+  </script>
+
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
+  <style>
+    body {
+      background:#0b1c2d;
+      color:white;
+      text-align:center;
+      font-family:sans-serif;
+      padding:20px;
+    }
+    #reader {
+      width:300px;
+      margin:auto;
+      margin-top:20px;
+    }
+    #result {
+      font-size:22px;
+      margin-top:20px;
+    }
+    button {
+      margin-top:20px;
+      padding:10px 18px;
+      background:#d4af37;
+      border:none;
+      font-weight:bold;
+      cursor:pointer;
+      border-radius:6px;
+    }
+    .role-tag {
+      font-size:14px;
+      opacity:0.8;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎫 Ticket Verification</h1>
+<div class="role-tag">Role: <b id="roleText"></b></div>
+
+<button onclick="logout()">Logout</button>
+
+<div id="reader"></div>
+<div id="result"></div>
+
+<script>
+document.getElementById("roleText").innerText =
+  sessionStorage.getItem("role") || "-";
+
+function logout() {
+  sessionStorage.clear();
+  window.location.href = "login.html";
+}
+
+const resultDiv = document.getElementById("result");
+
+function onScanSuccess(text) {
+  const match = text.match(/Payment:(.*)/);
+
+  if (!match) {
+    resultDiv.innerHTML = "❌ Invalid QR Code";
+    return;
+  }
+
+  fetch("http://localhost:5000/verify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ paymentId: match[1].trim() })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "VALID") {
+      resultDiv.innerHTML =
+        `✅ VALID ENTRY<br><b>${data.name}</b><br>${data.event}`;
+    } 
+    else if (data.status === "ALREADY_USED") {
+      resultDiv.innerHTML = "⚠️ Ticket Already Used";
+    } 
+    else {
+      resultDiv.innerHTML = "❌ Invalid Ticket";
+    }
+  })
+  .catch(() => {
+    resultDiv.innerHTML = "❌ Server error";
+  });
+}
+
+new Html5Qrcode("reader").start(
+  { facingMode: "environment" },
+  { fps: 10, qrbox: 250 },
+  onScanSuccess
+);
+</script>
+
+</body>
+</html>
