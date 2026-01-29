@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TechFest 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="college-logo.png" alt="College Logo">
+  </div>
+
+  <!-- Hamburger -->
+  <div class="hamburger" onclick="openMenu()">☰</div>
+
+  <!-- Desktop Menu -->
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pages/events.html">Events</a></li>
+    <li><a href="pages/workshops.html">Workshops</a></li>
+    <li><a href="pages/expo.html">Expo</a></li>
+    <li><a href="pages/developers.html">Developers</a></li>
+  </ul>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <span class="close-menu" onclick="closeMenu()">×</span>
+
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="pages/events.html" onclick="closeMenu()">Events</a>
+  <a href="pages/workshops.html" onclick="closeMenu()">Workshops</a>
+  <a href="pages/expo.html" onclick="closeMenu()">Expo</a>
+  <a href="pages/developers.html" onclick="closeMenu()">Developers</a>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="blue-bg.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="hero-card">
+    <span class="fest-tag">ANNUAL NATIONAL LEVEL TECH FEST</span>
+
+    <h1>TECHFEST <span>2026</span></h1>
+
+    <div class="divider"></div>
+
+    <p class="tagline">Innovate • Inspire • Ignite</p>
+
+    <!-- REGISTER BUTTON -->
+    <button class="register-btn" onclick="openRegister()">Register Now</button>
+
+    <div class="event-info">
+      <div class="date-box">
+        📅 February 20 – 21, 2026
+      </div>
+      <h2 id="timer">Loading...</h2>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER POPUP -->
+<div id="registerModal" class="register-modal">
+  <div class="register-box">
+    <span class="close-btn" onclick="closeRegister()">×</span>
+    <h2>Register For</h2>
+
+    <div class="register-options">
+      <a href="pages/events.html">🎯 Events</a>
+      <a href="pages/workshops.html">🛠 Workshops</a>
+      <a href="pages/expo.html">🏛 Expo</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Instagram: <span>@yourcollege</span></p>
+  <p>College Mail: <span>college@gmail.com</span></p>
+  <p>TechFest Queries: <span>techfest@gmail.com</span></p>
+  <p class="copyright">© 2026 JNN Institute of Engineering</p>
+</footer>
+
+<!-- TIMER SCRIPT -->
+<script src="script.js"></script>
+
+<!-- POPUP + HAMBURGER SCRIPT -->
+<script>
+  /* Register popup */
+  function openRegister() {
+    document.getElementById("registerModal").style.display = "flex";
+  }
+  function closeRegister() {
+    document.getElementById("registerModal").style.display = "none";
+  }
+
+  /* Mobile menu */
+  function openMenu() {
+    document.getElementById("mobileMenu").style.right = "0";
+  }
+  function closeMenu() {
+    document.getElementById("mobileMenu").style.right = "-100%";
+  }
+</script>
+
+</body>
+</html>

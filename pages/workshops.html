@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workshops | TechFest</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="../college-logo.png" alt="College Logo">
+  </div>
+
+  <div class="hamburger" onclick="openMenu()">☰</div>
+
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="workshops.html">Workshops</a></li>
+    <li><a href="expo.html">Expo</a></li>
+    <li><a href="developers.html">Developers</a></li>
+  </ul>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <span class="close-menu" onclick="closeMenu()">×</span>
+  <a href="../index.html" onclick="closeMenu()">Home</a>
+  <a href="events.html" onclick="closeMenu()">Events</a>
+  <a href="workshops.html" onclick="closeMenu()">Workshops</a>
+  <a href="expo.html" onclick="closeMenu()">Expo</a>
+  <a href="developers.html" onclick="closeMenu()">Developers</a>
+</div>
+
+<!-- WORKSHOPS SECTION -->
+<section class="page-content">
+  <h1>Technical Workshops</h1>
+
+  <div class="event-grid">
+
+    <!-- WORKSHOP 1 -->
+    <div class="event-card"
+      onclick="openModal(
+        'Generative AI Workshop',
+        'Hands-on workshop covering Generative AI concepts, tools, and real-world applications.',
+        '🕒 Duration: Full Day<br>🛠 Mode: Hands-on<br>🎓 Certificate: Provided<br>💰 Fee: ₹499',
+        'https://forms.gle/GENAI_FORM'
+      )">
+      <div class="event-poster">
+        <img src="../posters/genai.png" alt="Generative AI Workshop">
+      </div>
+      <h2>Generative AI</h2>
+      <p>Explore AI models like ChatGPT, image generation, and AI tools.</p>
+    </div>
+
+    <!-- WORKSHOP 2 -->
+    <div class="event-card"
+      onclick="openModal(
+        'React.js Workshop',
+        'Build modern frontend applications using React.js with practical projects.',
+        '🕒 Duration: Full Day<br>🛠 Mode: Hands-on<br>🎓 Certificate: Provided<br>💰 Fee: ₹399',
+        'https://forms.gle/REACT_FORM'
+      )">
+      <div class="event-poster">
+        <img src="../posters/react.png" alt="React Workshop">
+      </div>
+      <h2>React.js</h2>
+      <p>Learn component-based UI development using React.</p>
+    </div>
+
+    <!-- WORKSHOP 3 -->
+    <div class="event-card"
+      onclick="openModal(
+        'Node.js Workshop',
+        'Backend development workshop using Node.js, Express, and APIs.',
+        '🕒 Duration: Full Day<br>🛠 Mode: Hands-on<br>🎓 Certificate: Provided<br>💰 Fee: ₹399',
+        'https://forms.gle/NODE_FORM'
+      )">
+      <div class="event-poster">
+        <img src="../posters/node.png" alt="Node Workshop">
+      </div>
+      <h2>Node.js</h2>
+      <p>Build scalable backend applications using Node and Express.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="eventModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <div id="modalDetails" class="modal-details"></div>
+    <a id="modalRegister" href="#" target="_blank" class="modal-register">
+      Register Now
+    </a>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+  /* Mobile Menu */
+  function openMenu() {
+    document.getElementById("mobileMenu").style.right = "0";
+  }
+  function closeMenu() {
+    document.getElementById("mobileMenu").style.right = "-100%";
+  }
+
+  /* Modal */
+  function openModal(title, desc, details, link) {
+    document.getElementById("modalTitle").innerHTML = title;
+    document.getElementById("modalDesc").innerHTML = desc;
+    document.getElementById("modalDetails").innerHTML = details;
+    document.getElementById("modalRegister").href = link;
+    document.getElementById("eventModal").style.display = "flex";
+  }
+  function closeModal() {
+    document.getElementById("eventModal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

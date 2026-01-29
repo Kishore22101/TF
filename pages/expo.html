@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expo | TechFest</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="../college-logo.png" alt="College Logo">
+  </div>
+
+  <div class="hamburger" onclick="openMenu()">☰</div>
+
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="workshops.html">Workshops</a></li>
+    <li><a href="expo.html">Expo</a></li>
+    <li><a href="developers.html">Developers</a></li>
+  </ul>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <span class="close-menu" onclick="closeMenu()">×</span>
+  <a href="../index.html" onclick="closeMenu()">Home</a>
+  <a href="events.html" onclick="closeMenu()">Events</a>
+  <a href="workshops.html" onclick="closeMenu()">Workshops</a>
+  <a href="expo.html" onclick="closeMenu()">Expo</a>
+  <a href="developers.html" onclick="closeMenu()">Developers</a>
+</div>
+
+<!-- EXPO SECTION -->
+<section class="expo-section">
+  <div class="expo-card">
+
+    <span class="expo-tag">TECHFEST 2026</span>
+
+    <h1>EXPO</h1>
+
+    <div class="divider"></div>
+
+    <p class="expo-text">
+      Exciting technology showcases, startup demos, and innovative projects
+      are on the way.
+    </p>
+
+    <h2 class="expo-soon">🚧 Stay Tuned</h2>
+
+    <p class="expo-sub">
+      Updates will be announced soon.  
+      Follow us on Instagram for the latest announcements.
+    </p>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Instagram: <span>@yourcollege</span></p>
+  <p>College Mail: <span>college@gmail.com</span></p>
+  <p>TechFest Queries: <span>techfest@gmail.com</span></p>
+  <p class="copyright">© 2026 Your College Name</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  function openMenu() {
+    document.getElementById("mobileMenu").style.right = "0";
+  }
+
+  function closeMenu() {
+    document.getElementById("mobileMenu").style.right = "-100%";
+  }
+</script>
+
+</body>
+</html>
