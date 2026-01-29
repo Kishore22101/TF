@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Payment | Seraphis</title>
+  <link rel="stylesheet" href="../style.css">
 
   <!-- Razorpay -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <style>
-    body {
-      background: #0b1c2d;
-      color: white;
-      font-family: "Segoe UI", sans-serif;
+    .payment-container {
+      min-height: 100vh;
+      padding-top: 120px;
+      padding-bottom: 80px;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
     }
 
     .payment-box {
@@ -28,6 +27,28 @@
       max-width: 380px;
       border: 1px solid #d4af37;
       box-shadow: 0 0 30px rgba(212,175,55,0.3);
+      position: relative;
+    }
+
+    .go-back-btn {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: transparent;
+      border: 1px solid #d4af37;
+      color: #d4af37;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .go-back-btn:hover {
+      background: rgba(212,175,55,0.1);
+      color: #ffd700;
     }
 
     h1 {
@@ -66,16 +87,57 @@
 </head>
 <body>
 
-<div class="payment-box">
-  <h1>Complete Payment</h1>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="../college-logo.png" alt="College Logo">
+  </div>
+  <div class="hamburger" onclick="openMenu()">☰</div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="workshops.html">Workshops</a></li>
+    <li><a href="expo.html">Expo</a></li>
+    <li><a href="developers.html">Developers</a></li>
+  </ul>
+</nav>
 
-  <p><b>Name:</b> <span id="name"></span></p>
-  <p><b>Event:</b> <span id="event"></span></p>
-  <p><b>Amount:</b> ₹<span id="amount">150</span></p>
+<!-- ================= MOBILE MENU ================= -->
+<div id="mobileMenu" class="mobile-menu">
+  <span class="close-menu" onclick="closeMenu()">×</span>
+  <a href="../index.html" onclick="closeMenu()">Home</a>
+  <a href="events.html" onclick="closeMenu()">Events</a>
+  <a href="workshops.html" onclick="closeMenu()">Workshops</a>
+  <a href="expo.html" onclick="closeMenu()">Expo</a>
+  <a href="developers.html" onclick="closeMenu()">Developers</a>
+</div>
 
-  <button id="payBtn">Pay Now</button>
+<div class="payment-container">
+  <div class="payment-box">
+    <a href="register.html" class="go-back-btn">← Go Back</a>
+    <h1>Complete Payment</h1>
 
-  <div id="status"></div>
+    <div style="text-align:left; border-bottom:1px solid #d4af37; padding-bottom:15px; margin-bottom:15px;">
+      <h3 style="color:#d4af37; margin-bottom:10px;">Registration Summary</h3>
+      
+      <p><b>Event:</b> <span id="event">-</span></p>
+      <p><b>Amount:</b> ₹<span id="amount">150</span></p>
+      
+      <h4 style="color:#ffd700; margin-top:12px; margin-bottom:8px;">Participant 1</h4>
+      <p style="margin:4px 0;"><b>Name:</b> <span id="name">-</span></p>
+      <p style="margin:4px 0;"><b>College:</b> <span id="college1">-</span></p>
+      <p style="margin:4px 0;"><b>Department:</b> <span id="dept1">-</span></p>
+      <p style="margin:4px 0;"><b>Year:</b> <span id="year1">-</span></p>
+      <p style="margin:4px 0;"><b>Email:</b> <span id="email">-</span></p>
+      <p style="margin:4px 0;"><b>Phone:</b> <span id="phone">-</span></p>
+
+      <div id="teamDetailsContainer"></div>
+    </div>
+
+    <button id="payBtn">Pay Now</button>
+
+    <div id="status"></div>
+  </div>
 </div>
 
 <script>
@@ -84,18 +146,54 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("name").innerText =
     localStorage.getItem("name") || "-";
 
+  document.getElementById("college1").innerText =
+    localStorage.getItem("college1") || "-";
+
+  document.getElementById("dept1").innerText =
+    localStorage.getItem("dept1") || "-";
+
+  document.getElementById("year1").innerText =
+    localStorage.getItem("year1") || "-";
+
+  document.getElementById("email").innerText =
+    localStorage.getItem("email") || "-";
+
+  document.getElementById("phone").innerText =
+    localStorage.getItem("phone") || "-";
+
   document.getElementById("event").innerText =
     localStorage.getItem("event") || "-";
 
   const amountValue = parseInt(localStorage.getItem("amount")) || 150;
   document.getElementById("amount").innerText = amountValue;
+
+  // Load team details if they exist
+  const storedTeam = localStorage.getItem("team");
+  if (storedTeam) {
+    try {
+      const team = JSON.parse(storedTeam);
+      if (team.length > 1) {
+        let teamHTML = "";
+        for (let i = 1; i < team.length; i++) {
+          const member = team[i];
+          teamHTML += `
+            <h4 style="color:#ffd700; margin-top:12px; margin-bottom:8px;">Participant ${i + 1}</h4>
+            <p style="margin:4px 0;"><b>Name:</b> ${member.name || "-"}</p>
+            <p style="margin:4px 0;"><b>College:</b> ${member.college || "-"}</p>
+            <p style="margin:4px 0;"><b>Department:</b> ${member.dept || "-"}</p>
+            <p style="margin:4px 0;"><b>Year:</b> ${member.year || "-"}</p>
+          `;
+        }
+        document.getElementById("teamDetailsContainer").innerHTML = teamHTML;
+      }
+    } catch (e) {}
+  }
 });
 
 /* PAY BUTTON */
 document.getElementById("payBtn").onclick = function () {
 
   const statusDiv = document.getElementById("status");
-  statusDiv.innerText = "Opening payment gateway...";
 
   const amountValue = parseInt(localStorage.getItem("amount")) || 150;
 
@@ -147,6 +245,25 @@ document.getElementById("payBtn").onclick = function () {
   var rzp = new Razorpay(options);
   rzp.open();
 };
+</script>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>Instagram: <span>@yourcollege</span></p>
+  <p>College Mail: <span>college@gmail.com</span></p>
+  <p>Seraphis Queries: <span>techfest@gmail.com</span></p>
+  <p class="copyright">© 2026 JNN Institute of Engineering</p>
+</footer>
+
+<!-- ================= MOBILE MENU SCRIPT ================= -->
+<script>
+  function openMenu() {
+    document.getElementById("mobileMenu").style.right = "0";
+  }
+
+  function closeMenu() {
+    document.getElementById("mobileMenu").style.right = "-100%";
+  }
 </script>
 
 </body>

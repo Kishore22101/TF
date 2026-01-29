@@ -72,6 +72,31 @@
 </head>
 <body>
 
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="../college-logo.png" alt="College Logo">
+  </div>
+  <div class="hamburger" onclick="openMenu()">☰</div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="workshops.html">Workshops</a></li>
+    <li><a href="expo.html">Expo</a></li>
+    <li><a href="developers.html">Developers</a></li>
+  </ul>
+</nav>
+
+<!-- ================= MOBILE MENU ================= -->
+<div id="mobileMenu" class="mobile-menu">
+  <span class="close-menu" onclick="closeMenu()">×</span>
+  <a href="../index.html" onclick="closeMenu()">Home</a>
+  <a href="events.html" onclick="closeMenu()">Events</a>
+  <a href="workshops.html" onclick="closeMenu()">Workshops</a>
+  <a href="expo.html" onclick="closeMenu()">Expo</a>
+  <a href="developers.html" onclick="closeMenu()">Developers</a>
+</div>
+
 <div class="form-card">
   <h1>Event Registration</h1>
 
@@ -361,6 +386,9 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
   }
 
   localStorage.setItem("name", document.getElementById("name1").value);
+  localStorage.setItem("college1", document.getElementById("college1").value);
+  localStorage.setItem("dept1", document.getElementById("dept1").value);
+  localStorage.setItem("year1", document.getElementById("year1").value);
   localStorage.setItem("email", document.getElementById("email").value);
   localStorage.setItem("phone", document.getElementById("phone").value);
   localStorage.setItem("event", event);
@@ -369,6 +397,25 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
 
   window.location.href = "payment.html";
 });
+</script>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>Instagram: <span>@yourcollege</span></p>
+  <p>College Mail: <span>college@gmail.com</span></p>
+  <p>Seraphis Queries: <span>techfest@gmail.com</span></p>
+  <p class="copyright">© 2026 JNN Institute of Engineering</p>
+</footer>
+
+<!-- ================= MOBILE MENU SCRIPT ================= -->
+<script>
+  function openMenu() {
+    document.getElementById("mobileMenu").style.right = "0";
+  }
+
+  function closeMenu() {
+    document.getElementById("mobileMenu").style.right = "-100%";
+  }
 </script>
 
 </body>
