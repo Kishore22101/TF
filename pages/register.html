@@ -124,7 +124,8 @@
       <option value="4th Year">4th Year</option>
     </select>
     <input type="email" id="email" placeholder="Email (Team Contact)" required>
-    <input type="tel" id="phone" placeholder="Phone Number" required>
+    <input type="tel" id="phone" placeholder="Phone Number (10 digits)" maxlength="10" pattern="[0-9]{10}" required>
+    <div class="hint" style="color: #ff6b6b; display:none;" id="phoneError">Phone number must be exactly 10 digits</div>
 
     <!-- EVENT -->
     <select id="event" required>
@@ -366,6 +367,16 @@ function updateForm() {
 
 /* PREFILL FROM EVENTS PAGE */
 window.addEventListener("DOMContentLoaded", () => {
+  const phoneInput = document.getElementById("phone");
+  
+  // Allow only numeric input for phone
+  phoneInput.addEventListener("input", function(e) {
+    this.value = this.value.replace(/[^0-9]/g, "");
+    if (this.value.length > 10) {
+      this.value = this.value.slice(0, 10);
+    }
+  });
+
   const storedEvent = localStorage.getItem("event");
   if (storedEvent) {
     // ensure option exists
@@ -439,6 +450,15 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
     alert("Please fill all required fields for the primary participant");
     return;
   }
+
+  // Validate phone number - must be exactly 10 digits
+  if (!/^\d{10}$/.test(phone)) {
+    alert("Phone number must be exactly 10 digits");
+    document.getElementById("phoneError").style.display = "block";
+    document.getElementById("phone").focus();
+    return;
+  }
+  document.getElementById("phoneError").style.display = "none";
 
   // Build team array with full details
   const team = [

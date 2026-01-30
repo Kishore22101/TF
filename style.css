@@ -556,11 +556,33 @@ copyright {
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .center-logo {
+    position: static;
+    transform: none;
+    flex: 1;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .center-logo img {
+    height: 50px;
+  }
+
   .nav-links {
     display: none;
   }
+
   .hamburger {
     display: block;
+    margin-left: auto;
   }
 }
 
