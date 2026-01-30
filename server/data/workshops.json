@@ -1,0 +1,20 @@
+{
+  "Generative AI Workshop": {
+    "type": "SOLO",
+    "price": 499,
+    "minTeamSize": 1,
+    "maxTeamSize": 1
+  },
+  "React.js Workshop": {
+    "type": "SOLO",
+    "price": 399,
+    "minTeamSize": 1,
+    "maxTeamSize": 1
+  },
+  "Node.js Workshop": {
+    "type": "SOLO",
+    "price": 399,
+    "minTeamSize": 1,
+    "maxTeamSize": 1
+  }
+}

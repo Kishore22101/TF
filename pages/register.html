@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Register | Seraphis</title>
+  <title>Register | TechForge</title>
   <link rel="stylesheet" href="../style.css">
 
   <style>
@@ -77,6 +77,9 @@
   <div class="logo">
     <img src="../college-logo.png" alt="College Logo">
   </div>
+  <div class="center-logo">
+    <img src="../techforge.png" alt="TechForge Logo">
+  </div>
   <div class="hamburger" onclick="openMenu()">☰</div>
   <ul class="nav-links">
     <li><a href="../index.html">Home</a></li>
@@ -103,8 +106,15 @@
   <form id="registerForm">
 
     <!-- MAIN CONTACT -->
-    <input type="text" id="name1" placeholder="Participant 1 (Required)" required>
+    <input type="text" id="name1" placeholder="Name (Required)" required>
     <input type="text" id="college1" placeholder="College Name" required>
+    <select id="degree1" required>
+      <option value="">Select Degree</option>
+      <option value="B.E">B.E</option>
+      <option value="B.Tech">B.Tech</option>
+      <option value="B.Sc">B.Sc</option>
+      <option value="MBA">MBA</option>
+    </select>
     <input type="text" id="dept1" placeholder="Department" required>
     <select id="year1" required>
       <option value="">Select Year</option>
@@ -136,9 +146,16 @@
       <div class="team-title">Team Members</div>
       
       <div id="teamMember2" style="display:none">
-        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #d4af37; opacity:0.7;">Participant 2</div>
-        <input type="text" id="name2" placeholder="Participant 2 (Optional)">
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #d4af37; opacity:0.7;"><span id="label2">Member 1</span></div>
+        <input type="text" id="name2" placeholder="Member 1 Name (Optional)">
         <input type="text" id="college2" placeholder="College Name">
+        <select id="degree2">
+          <option value="">Select Degree</option>
+          <option value="B.E">B.E</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="B.Sc">B.Sc</option>
+          <option value="MBA">MBA</option>
+        </select>
         <input type="text" id="dept2" placeholder="Department">
         <select id="year2">
           <option value="">Select Year</option>
@@ -150,9 +167,16 @@
       </div>
 
       <div id="teamMember3" style="display:none">
-        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #d4af37; opacity:0.7;">Participant 3</div>
-        <input type="text" id="name3" placeholder="Participant 3 (Optional)">
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #d4af37; opacity:0.7;"><span id="label3">Member 2</span></div>
+        <input type="text" id="name3" placeholder="Member 2 Name (Optional)">
         <input type="text" id="college3" placeholder="College Name">
+        <select id="degree3">
+          <option value="">Select Degree</option>
+          <option value="B.E">B.E</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="B.Sc">B.Sc</option>
+          <option value="MBA">MBA</option>
+        </select>
         <input type="text" id="dept3" placeholder="Department">
         <select id="year3">
           <option value="">Select Year</option>
@@ -164,9 +188,16 @@
       </div>
 
       <div id="teamMember4" style="display:none">
-        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #d4af37; opacity:0.7;">Participant 4</div>
-        <input type="text" id="name4" placeholder="Participant 4 (Optional)">
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #d4af37; opacity:0.7;"><span id="label4">Member 3</span></div>
+        <input type="text" id="name4" placeholder="Member 3 Name (Optional)">
         <input type="text" id="college4" placeholder="College Name">
+        <select id="degree4">
+          <option value="">Select Degree</option>
+          <option value="B.E">B.E</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="B.Sc">B.Sc</option>
+          <option value="MBA">MBA</option>
+        </select>
         <input type="text" id="dept4" placeholder="Department">
         <select id="year4">
           <option value="">Select Year</option>
@@ -192,53 +223,63 @@
 /* EVENT CONFIG (frontend reference only) */
 const eventConfig = {
   "CodeCraft Quiz": {
-    type: "TEAM",
+    type: "SOLO",
     price: 150,
-    maxTeamSize: 2
+    minTeamSize: 1,
+    maxTeamSize: 1
   },
   "WebNOVA AI": {
     type: "TEAM",
-    price: 200,
-    maxTeamSize: 2
+    price: 300,
+    minTeamSize: 2,
+    maxTeamSize: 3
   },
   "Poster Bot": {
-    type: "TEAM",
+    type: "SOLO",
     price: 100,
-    maxTeamSize: 2
+    minTeamSize: 1,
+    maxTeamSize: 1
   },
   "Comic Intelligence": {
     type: "SOLO",
     price: 100,
+    minTeamSize: 1,
     maxTeamSize: 1
   },
   "Maze Solver": {
-    type: "TEAM",
+    type: "SOLO",
     price: 250,
-    maxTeamSize: 2
+    minTeamSize: 1,
+    maxTeamSize: 1
   },
   "BrainByte Bash": {
     type: "SOLO",
     price: 150,
+    minTeamSize: 1,
     maxTeamSize: 1
   },
   "Thinkify": {
     type: "TEAM",
     price: 200,
+    minTeamSize: 2,
     maxTeamSize: 3
   },
   "Code Relay": {
     type: "TEAM",
     price: 250,
+    minTeamSize: 3,
     maxTeamSize: 3
   },
   "Mismatch The Code": {
     type: "TEAM",
     price: 150,
+    minTeamSize: 2,
     maxTeamSize: 2
   },
   "Tech Connections": {
     type: "TEAM",
     price: 100,
+    minTeamSize: 2,
     maxTeamSize: 3
   }
 };
@@ -280,25 +321,46 @@ function updateForm() {
   if (config.type === "SOLO") {
     teamSection.style.display = "none";
     teamInputs.forEach(i => i.value = "");
+    
+    // Update label to show "Name" for solo events
+    document.getElementById("name1").placeholder = "Name (Required)";
   } else {
     teamSection.style.display = "block";
+    
+    // Update label to show "Team Leader" for team events
+    document.getElementById("name1").placeholder = "Team Leader Name (Required)";
 
     teamMembers.forEach((member, index) => {
       const maxMembers = config.maxTeamSize - 1;
       member.style.display = index < maxMembers ? "block" : "none";
       
+      // Update member labels
+      const label = document.getElementById(`label${index + 2}`);
+      if (label) {
+        label.innerText = `Member ${index + 1}`;
+      }
+      
       // Clear team member inputs
       const name = document.getElementById(`name${index + 2}`);
       const college = document.getElementById(`college${index + 2}`);
+      const degree = document.getElementById(`degree${index + 2}`);
       const dept = document.getElementById(`dept${index + 2}`);
       const year = document.getElementById(`year${index + 2}`);
       if (name) name.value = "";
       if (college) college.value = "";
+      if (degree) degree.value = "";
       if (dept) dept.value = "";
       if (year) year.value = "";
     });
 
-    teamHint.innerText = `Team size: up to ${config.maxTeamSize} members`;
+    // Show hint with min and max team size
+    let hintText = `Team size: ${config.minTeamSize} to ${config.maxTeamSize} members`;
+    if (config.minTeamSize === config.maxTeamSize) {
+      hintText = `Team size: Exactly ${config.maxTeamSize} members required`;
+    } else if (config.minTeamSize > 1) {
+      hintText = `Team size: Minimum ${config.minTeamSize} to Maximum ${config.maxTeamSize} members`;
+    }
+    teamHint.innerText = hintText;
   }
 }
 
@@ -332,6 +394,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const team = JSON.parse(storedTeam);
       if (team[0]) {
         document.getElementById("college1").value = team[0].college || "";
+        document.getElementById("degree1").value = team[0].degree || "";
         document.getElementById("dept1").value = team[0].dept || "";
         document.getElementById("year1").value = team[0].year || "";
       }
@@ -342,6 +405,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (nameEl) {
           nameEl.value = member.name || "";
           document.getElementById(`college${i + 1}`).value = member.college || "";
+          document.getElementById(`degree${i + 1}`).value = member.degree || "";
           document.getElementById(`dept${i + 1}`).value = member.dept || "";
           document.getElementById(`year${i + 1}`).value = member.year || "";
         }
@@ -362,35 +426,84 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
     return;
   }
 
+  // Validate primary participant
+  const name1 = document.getElementById("name1").value.trim();
+  const college1 = document.getElementById("college1").value.trim();
+  const degree1 = document.getElementById("degree1").value.trim();
+  const dept1 = document.getElementById("dept1").value.trim();
+  const year1 = document.getElementById("year1").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+
+  if (!name1 || !college1 || !degree1 || !dept1 || !year1 || !email || !phone) {
+    alert("Please fill all required fields for the primary participant");
+    return;
+  }
+
   // Build team array with full details
   const team = [
     {
-      name: document.getElementById("name1").value,
-      college: document.getElementById("college1").value,
-      dept: document.getElementById("dept1").value,
-      year: document.getElementById("year1").value
+      name: name1,
+      college: college1,
+      degree: degree1,
+      dept: dept1,
+      year: year1
     }
   ];
 
-  // Add team members if they exist
-  for (let i = 2; i <= 4; i++) {
-    const nameEl = document.getElementById(`name${i}`);
-    if (nameEl && nameEl.value.trim()) {
-      team.push({
-        name: nameEl.value,
-        college: document.getElementById(`college${i}`).value,
-        dept: document.getElementById(`dept${i}`).value,
-        year: document.getElementById(`year${i}`).value
-      });
+  // For team events, validate team members
+  if (config.type === "TEAM") {
+    let teamMemberCount = 1;
+    
+    for (let i = 2; i <= 4; i++) {
+      const nameEl = document.getElementById(`name${i}`);
+      const collegeEl = document.getElementById(`college${i}`);
+      const degreeEl = document.getElementById(`degree${i}`);
+      const deptEl = document.getElementById(`dept${i}`);
+      const yearEl = document.getElementById(`year${i}`);
+
+      if (nameEl && nameEl.value.trim()) {
+        teamMemberCount++;
+        
+        // If a team member name is provided, validate all fields
+        if (!collegeEl.value.trim() || !degreeEl.value.trim() || !deptEl.value.trim() || !yearEl.value.trim()) {
+          alert(`Please fill all fields for Member ${i - 1}`);
+          return;
+        }
+
+        team.push({
+          name: nameEl.value.trim(),
+          college: collegeEl.value.trim(),
+          degree: degreeEl.value.trim(),
+          dept: deptEl.value.trim(),
+          year: yearEl.value.trim()
+        });
+      }
+    }
+
+    // Check if team size is within limits
+    if (teamMemberCount < config.minTeamSize) {
+      if (config.minTeamSize === config.maxTeamSize) {
+        alert(`This event requires exactly ${config.minTeamSize} members. You have entered ${teamMemberCount}.`);
+      } else {
+        alert(`This event requires minimum ${config.minTeamSize} members. You have entered ${teamMemberCount}.`);
+      }
+      return;
+    }
+
+    if (teamMemberCount > config.maxTeamSize) {
+      alert(`Maximum team size for this event is ${config.maxTeamSize} members. You have entered ${teamMemberCount}.`);
+      return;
     }
   }
 
-  localStorage.setItem("name", document.getElementById("name1").value);
-  localStorage.setItem("college1", document.getElementById("college1").value);
-  localStorage.setItem("dept1", document.getElementById("dept1").value);
-  localStorage.setItem("year1", document.getElementById("year1").value);
-  localStorage.setItem("email", document.getElementById("email").value);
-  localStorage.setItem("phone", document.getElementById("phone").value);
+  localStorage.setItem("name", name1);
+  localStorage.setItem("college1", college1);
+  localStorage.setItem("degree1", degree1);
+  localStorage.setItem("dept1", dept1);
+  localStorage.setItem("year1", year1);
+  localStorage.setItem("email", email);
+  localStorage.setItem("phone", phone);
   localStorage.setItem("event", event);
   localStorage.setItem("team", JSON.stringify(team));
   localStorage.setItem("amount", config.price);
@@ -403,7 +516,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
 <footer>
   <p>Instagram: <span>@yourcollege</span></p>
   <p>College Mail: <span>college@gmail.com</span></p>
-  <p>Seraphis Queries: <span>techfest@gmail.com</span></p>
+  <p>TechForge Queries: <span>techfest@gmail.com</span></p>
   <p class="copyright">© 2026 JNN Institute of Engineering</p>
 </footer>
 

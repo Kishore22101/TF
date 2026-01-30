@@ -2,21 +2,67 @@
   "CodeCraft Quiz": {
     "type": "SOLO",
     "price": 150,
+    "minTeamSize": 1,
     "maxTeamSize": 1
   },
   "WebNOVA AI": {
     "type": "TEAM",
     "price": 300,
+    "minTeamSize": 2,
     "maxTeamSize": 3
   },
   "Hackathon": {
     "type": "TEAM",
     "price": 500,
+    "minTeamSize": 3,
     "maxTeamSize": 4
   },
   "Poster Bot": {
     "type": "SOLO",
     "price": 100,
+    "minTeamSize": 1,
     "maxTeamSize": 1
+  },
+  "Comic Intelligence": {
+    "type": "SOLO",
+    "price": 100,
+    "minTeamSize": 1,
+    "maxTeamSize": 1
+  },
+  "Maze Solver": {
+    "type": "SOLO",
+    "price": 250,
+    "minTeamSize": 1,
+    "maxTeamSize": 1
+  },
+  "BrainByte Bash": {
+    "type": "SOLO",
+    "price": 150,
+    "minTeamSize": 1,
+    "maxTeamSize": 1
+  },
+  "Thinkify": {
+    "type": "TEAM",
+    "price": 200,
+    "minTeamSize": 2,
+    "maxTeamSize": 3
+  },
+  "Code Relay": {
+    "type": "TEAM",
+    "price": 250,
+    "minTeamSize": 3,
+    "maxTeamSize": 3
+  },
+  "Mismatch The Code": {
+    "type": "TEAM",
+    "price": 150,
+    "minTeamSize": 2,
+    "maxTeamSize": 2
+  },
+  "Tech Connections": {
+    "type": "TEAM",
+    "price": 100,
+    "minTeamSize": 2,
+    "maxTeamSize": 3
   }
 }

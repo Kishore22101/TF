@@ -13,6 +13,10 @@
     <img src="../college-logo.png" alt="College Logo">
   </div>
 
+  <div class="center-logo">
+    <img src="../techforge.png" alt="TechForge Logo">
+  </div>
+
   <div class="hamburger" onclick="openMenu()">☰</div>
 
   <ul class="nav-links">
@@ -42,12 +46,7 @@
 
     <!-- WORKSHOP 1 -->
     <div class="event-card"
-      onclick="openModal(
-        'Generative AI Workshop',
-        'Hands-on workshop covering Generative AI concepts, tools, and real-world applications.',
-        '🕒 Duration: Full Day<br>🛠 Mode: Hands-on<br>🎓 Certificate: Provided<br>💰 Fee: ₹499',
-        'https://forms.gle/GENAI_FORM'
-      )">
+      onclick="registerWorkshop('Generative AI Workshop')">
       <div class="event-poster">
         <img src="../posters/genai.png" alt="Generative AI Workshop">
       </div>
@@ -61,12 +60,7 @@
 
     <!-- WORKSHOP 2 -->
     <div class="event-card"
-      onclick="openModal(
-        'React.js Workshop',
-        'Build modern frontend applications using React.js with practical projects.',
-        '🕒 Duration: Full Day<br>🛠 Mode: Hands-on<br>🎓 Certificate: Provided<br>💰 Fee: ₹399',
-        'https://forms.gle/REACT_FORM'
-      )">
+      onclick="registerWorkshop('React.js Workshop')">
       <div class="event-poster">
         <img src="../posters/react.png" alt="React Workshop">
       </div>
@@ -80,12 +74,7 @@
 
     <!-- WORKSHOP 3 -->
     <div class="event-card"
-      onclick="openModal(
-        'Node.js Workshop',
-        'Backend development workshop using Node.js, Express, and APIs.',
-        '🕒 Duration: Full Day<br>🛠 Mode: Hands-on<br>🎓 Certificate: Provided<br>💰 Fee: ₹399',
-        'https://forms.gle/NODE_FORM'
-      )">
+      onclick="registerWorkshop('Node.js Workshop')">
       <div class="event-poster">
         <img src="../posters/node.png" alt="Node Workshop">
       </div>
@@ -100,19 +89,6 @@
   </div>
 </section>
 
-<!-- MODAL -->
-<div id="eventModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeModal()">×</span>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
-    <div id="modalDetails" class="modal-details"></div>
-    <a id="modalRegister" href="#" target="_blank" class="modal-register">
-      Register Now
-    </a>
-  </div>
-</div>
-
 <!-- SCRIPTS -->
 <script>
   /* Mobile Menu */
@@ -123,16 +99,10 @@
     document.getElementById("mobileMenu").style.right = "-100%";
   }
 
-  /* Modal */
-  function openModal(title, desc, details, link) {
-    document.getElementById("modalTitle").innerHTML = title;
-    document.getElementById("modalDesc").innerHTML = desc;
-    document.getElementById("modalDetails").innerHTML = details;
-    document.getElementById("modalRegister").href = link;
-    document.getElementById("eventModal").style.display = "flex";
-  }
-  function closeModal() {
-    document.getElementById("eventModal").style.display = "none";
+  /* Workshop Registration */
+  function registerWorkshop(workshopName) {
+    localStorage.setItem("workshop", workshopName);
+    window.location.href = "workshop-register.html";
   }
 </script>
 

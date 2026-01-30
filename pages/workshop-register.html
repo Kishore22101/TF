@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop Registration | TechForge</title>
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .form-card {
+      max-width: 480px;
+      margin: 120px auto 40px;
+      background: rgba(14,14,14,0.9);
+      padding: 35px;
+      border-radius: 20px;
+      border: 1px solid rgba(212,175,55,0.6);
+      box-shadow: 0 0 35px rgba(212,175,55,0.3);
+    }
+
+    .form-card h1 {
+      text-align: center;
+      color: #d4af37;
+      margin-bottom: 20px;
+    }
+
+    .form-card input,
+    .form-card select {
+      width: 100%;
+      padding: 12px 14px;
+      margin-top: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+    }
+
+    .price-box {
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #111;
+      border: 1px dashed #d4af37;
+      text-align: center;
+      font-size: 16px;
+      color: #ffd700;
+    }
+
+    .form-card button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #d4af37, #ffd700);
+      color: #0e0e0e;
+      box-shadow: 0 0 25px rgba(212,175,55,0.7);
+    }
+
+    .hint {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="../college-logo.png" alt="College Logo">
+  </div>
+  <div class="center-logo">
+    <img src="../techforge.png" alt="TechForge Logo">
+  </div>
+  <div class="hamburger" onclick="openMenu()">☰</div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="workshops.html">Workshops</a></li>
+    <li><a href="expo.html">Expo</a></li>
+    <li><a href="developers.html">Developers</a></li>
+  </ul>
+</nav>
+
+<!-- ================= MOBILE MENU ================= -->
+<div id="mobileMenu" class="mobile-menu">
+  <span class="close-menu" onclick="closeMenu()">×</span>
+  <a href="../index.html" onclick="closeMenu()">Home</a>
+  <a href="events.html" onclick="closeMenu()">Events</a>
+  <a href="workshops.html" onclick="closeMenu()">Workshops</a>
+  <a href="expo.html" onclick="closeMenu()">Expo</a>
+  <a href="developers.html" onclick="closeMenu()">Developers</a>
+</div>
+
+<div class="form-card">
+  <h1>Workshop Registration</h1>
+
+  <form id="registerForm">
+
+    <!-- PARTICIPANT DETAILS -->
+    <input type="text" id="name" placeholder="Name (Required)" required>
+    <input type="text" id="college" placeholder="College Name" required>
+    <select id="degree" required>
+      <option value="">Select Degree</option>
+      <option value="B.E">B.E</option>
+      <option value="B.Tech">B.Tech</option>
+      <option value="B.Sc">B.Sc</option>
+      <option value="MBA">MBA</option>
+    </select>
+    <input type="text" id="dept" placeholder="Department" required>
+    <select id="year" required>
+      <option value="">Select Year</option>
+      <option value="1st Year">1st Year</option>
+      <option value="2nd Year">2nd Year</option>
+      <option value="3rd Year">3rd Year</option>
+      <option value="4th Year">4th Year</option>
+    </select>
+    <input type="email" id="email" placeholder="Email (Required)" required>
+    <input type="tel" id="phone" placeholder="Phone Number" required>
+
+    <!-- WORKSHOP -->
+    <select id="workshop" required>
+      <option value="">Select Workshop</option>
+      <option value="Generative AI Workshop">Generative AI Workshop</option>
+      <option value="React.js Workshop">React.js Workshop</option>
+      <option value="Node.js Workshop">Node.js Workshop</option>
+    </select>
+
+    <!-- PRICE -->
+    <div class="price-box" id="priceBox">
+      Select a workshop to see price
+    </div>
+
+    <button type="submit">Proceed to Payment</button>
+  </form>
+</div>
+
+<script>
+/* WORKSHOP CONFIG */
+const workshopConfig = {
+  "Generative AI Workshop": {
+    type: "SOLO",
+    price: 499,
+    minTeamSize: 1,
+    maxTeamSize: 1
+  },
+  "React.js Workshop": {
+    type: "SOLO",
+    price: 399,
+    minTeamSize: 1,
+    maxTeamSize: 1
+  },
+  "Node.js Workshop": {
+    type: "SOLO",
+    price: 399,
+    minTeamSize: 1,
+    maxTeamSize: 1
+  }
+};
+
+const workshopSelect = document.getElementById("workshop");
+const priceBox = document.getElementById("priceBox");
+
+/* WORKSHOP CHANGE */
+workshopSelect.addEventListener("change", updateForm);
+
+function updateForm() {
+  const workshop = workshopSelect.value;
+  const config = workshopConfig[workshop];
+
+  if (!config) {
+    priceBox.innerText = "Select a workshop to see price";
+    return;
+  }
+
+  localStorage.setItem("amount", config.price);
+  priceBox.innerText = `Registration Fee: ₹${config.price}`;
+}
+
+/* PREFILL FROM WORKSHOPS PAGE */
+window.addEventListener("DOMContentLoaded", () => {
+  const storedWorkshop = localStorage.getItem("workshop");
+  if (storedWorkshop) {
+    const exists = Array.from(workshopSelect.options).some(o => o.value === storedWorkshop);
+    if (!exists) {
+      const opt = document.createElement("option");
+      opt.value = storedWorkshop;
+      opt.text = storedWorkshop;
+      workshopSelect.appendChild(opt);
+    }
+    workshopSelect.value = storedWorkshop;
+    updateForm();
+  }
+
+  const storedName = localStorage.getItem("workshopName");
+  if (storedName) document.getElementById("name").value = storedName;
+  const storedEmail = localStorage.getItem("workshopEmail");
+  if (storedEmail) document.getElementById("email").value = storedEmail;
+  const storedPhone = localStorage.getItem("workshopPhone");
+  if (storedPhone) document.getElementById("phone").value = storedPhone;
+
+  const storedData = localStorage.getItem("workshopData");
+  if (storedData) {
+    try {
+      const data = JSON.parse(storedData);
+      document.getElementById("college").value = data.college || "";
+      document.getElementById("degree").value = data.degree || "";
+      document.getElementById("dept").value = data.dept || "";
+      document.getElementById("year").value = data.year || "";
+    } catch (e) {}
+  }
+});
+
+/* SUBMIT */
+document.getElementById("registerForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const workshop = workshopSelect.value;
+  const config = workshopConfig[workshop];
+
+  if (!config) {
+    alert("Please select a workshop");
+    return;
+  }
+
+  // Validate all fields
+  const name = document.getElementById("name").value.trim();
+  const college = document.getElementById("college").value.trim();
+  const degree = document.getElementById("degree").value.trim();
+  const dept = document.getElementById("dept").value.trim();
+  const year = document.getElementById("year").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+
+  if (!name || !college || !degree || !dept || !year || !email || !phone) {
+    alert("Please fill all required fields");
+    return;
+  }
+
+  // Store data
+  localStorage.setItem("workshopName", name);
+  localStorage.setItem("workshopEmail", email);
+  localStorage.setItem("workshopPhone", phone);
+  localStorage.setItem("workshop", workshop);
+  localStorage.setItem("workshopData", JSON.stringify({
+    name,
+    college,
+    degree,
+    dept,
+    year
+  }));
+  localStorage.setItem("amount", config.price);
+  localStorage.setItem("registrationType", "workshop");
+
+  window.location.href = "workshop-payment.html";
+});
+</script>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>Instagram: <span>@yourcollege</span></p>
+  <p>College Mail: <span>college@gmail.com</span></p>
+  <p>TechForge Queries: <span>techfest@gmail.com</span></p>
+  <p class="copyright">© 2026 JNN Institute of Engineering</p>
+</footer>
+
+<!-- ================= MOBILE MENU SCRIPT ================= -->
+<script>
+  function openMenu() {
+    document.getElementById("mobileMenu").style.right = "0";
+  }
+
+  function closeMenu() {
+    document.getElementById("mobileMenu").style.right = "-100%";
+  }
+</script>
+
+</body>
+</html>

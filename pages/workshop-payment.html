@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Payment | TechForge</title>
+  <title>Workshop Payment | TechForge</title>
   <link rel="stylesheet" href="../style.css">
 
   <!-- Razorpay -->
@@ -117,25 +117,23 @@
 
 <div class="payment-container">
   <div class="payment-box">
-    <a href="register.html" class="go-back-btn">← Go Back</a>
+    <a href="workshop-register.html" class="go-back-btn">← Go Back</a>
     <h1>Complete Payment</h1>
 
     <div style="text-align:left; border-bottom:1px solid #d4af37; padding-bottom:15px; margin-bottom:15px;">
       <h3 style="color:#d4af37; margin-bottom:10px;">Registration Summary</h3>
       
-      <p><b>Event:</b> <span id="event">-</span></p>
-      <p><b>Amount:</b> ₹<span id="amount">150</span></p>
+      <p><b>Workshop:</b> <span id="workshop">-</span></p>
+      <p><b>Amount:</b> ₹<span id="amount">399</span></p>
       
-      <h4 style="color:#ffd700; margin-top:12px; margin-bottom:8px;">Participant 1</h4>
+      <h4 style="color:#ffd700; margin-top:12px; margin-bottom:8px;">Participant Details</h4>
       <p style="margin:4px 0;"><b>Name:</b> <span id="name">-</span></p>
-      <p style="margin:4px 0;"><b>College:</b> <span id="college1">-</span></p>
-      <p style="margin:4px 0;"><b>Degree:</b> <span id="degree1">-</span></p>
-      <p style="margin:4px 0;"><b>Department:</b> <span id="dept1">-</span></p>
-      <p style="margin:4px 0;"><b>Year:</b> <span id="year1">-</span></p>
+      <p style="margin:4px 0;"><b>College:</b> <span id="college">-</span></p>
+      <p style="margin:4px 0;"><b>Degree:</b> <span id="degree">-</span></p>
+      <p style="margin:4px 0;"><b>Department:</b> <span id="dept">-</span></p>
+      <p style="margin:4px 0;"><b>Year:</b> <span id="year">-</span></p>
       <p style="margin:4px 0;"><b>Email:</b> <span id="email">-</span></p>
       <p style="margin:4px 0;"><b>Phone:</b> <span id="phone">-</span></p>
-
-      <div id="teamDetailsContainer"></div>
     </div>
 
     <button id="payBtn">Pay Now</button>
@@ -148,52 +146,28 @@
 /* LOAD DATA ON PAGE LOAD */
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("name").innerText =
-    localStorage.getItem("name") || "-";
-
-  document.getElementById("college1").innerText =
-    localStorage.getItem("college1") || "-";
-
-  document.getElementById("degree1").innerText =
-    localStorage.getItem("degree1") || "-";
-
-  document.getElementById("dept1").innerText =
-    localStorage.getItem("dept1") || "-";
-
-  document.getElementById("year1").innerText =
-    localStorage.getItem("year1") || "-";
+    localStorage.getItem("workshopName") || "-";
 
   document.getElementById("email").innerText =
-    localStorage.getItem("email") || "-";
+    localStorage.getItem("workshopEmail") || "-";
 
   document.getElementById("phone").innerText =
-    localStorage.getItem("phone") || "-";
+    localStorage.getItem("workshopPhone") || "-";
 
-  document.getElementById("event").innerText =
-    localStorage.getItem("event") || "-";
+  document.getElementById("workshop").innerText =
+    localStorage.getItem("workshop") || "-";
 
-  const amountValue = parseInt(localStorage.getItem("amount")) || 150;
+  const amountValue = parseInt(localStorage.getItem("amount")) || 399;
   document.getElementById("amount").innerText = amountValue;
 
-  // Load team details if they exist
-  const storedTeam = localStorage.getItem("team");
-  if (storedTeam) {
+  const workshopData = localStorage.getItem("workshopData");
+  if (workshopData) {
     try {
-      const team = JSON.parse(storedTeam);
-      if (team.length > 1) {
-        let teamHTML = "";
-        for (let i = 1; i < team.length; i++) {
-          const member = team[i];
-          teamHTML += `
-            <h4 style="color:#ffd700; margin-top:12px; margin-bottom:8px;">Member ${i}</h4>
-            <p style="margin:4px 0;"><b>Name:</b> ${member.name || "-"}</p>
-            <p style="margin:4px 0;"><b>College:</b> ${member.college || "-"}</p>
-            <p style="margin:4px 0;"><b>Degree:</b> ${member.degree || "-"}</p>
-            <p style="margin:4px 0;"><b>Department:</b> ${member.dept || "-"}</p>
-            <p style="margin:4px 0;"><b>Year:</b> ${member.year || "-"}</p>
-          `;
-        }
-        document.getElementById("teamDetailsContainer").innerHTML = teamHTML;
-      }
+      const data = JSON.parse(workshopData);
+      document.getElementById("college").innerText = data.college || "-";
+      document.getElementById("degree").innerText = data.degree || "-";
+      document.getElementById("dept").innerText = data.dept || "-";
+      document.getElementById("year").innerText = data.year || "-";
     } catch (e) {}
   }
 });
@@ -203,34 +177,40 @@ document.getElementById("payBtn").onclick = function () {
 
   const statusDiv = document.getElementById("status");
 
-  const amountValue = parseInt(localStorage.getItem("amount")) || 150;
+  const amountValue = parseInt(localStorage.getItem("amount")) || 399;
 
   var options = {
     key: "YOUR_RAZORPAY_KEY", // COLLEGE WILL GIVE
     amount: amountValue * 100, // amount in paise
     currency: "INR",
     name: "TechForge 2026",
-    description: localStorage.getItem("event") || "Event",
+    description: localStorage.getItem("workshop") || "Workshop",
 
     handler: function (response) {
       statusDiv.innerText = "Verifying registration...";
 
-      fetch("http://localhost:5000/register", {
+      const workshopData = localStorage.getItem("workshopData");
+      const data = workshopData ? JSON.parse(workshopData) : {};
+
+      fetch("http://localhost:5000/workshop-register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          leaderName: localStorage.getItem("name"),
-          email: localStorage.getItem("email"),
-          phone: localStorage.getItem("phone"),
-          event: localStorage.getItem("event"),
-          teamMembers: JSON.parse(localStorage.getItem("team") || "[]").slice(1),
+          name: localStorage.getItem("workshopName"),
+          email: localStorage.getItem("workshopEmail"),
+          phone: localStorage.getItem("workshopPhone"),
+          workshop: localStorage.getItem("workshop"),
+          college: data.college,
+          degree: data.degree,
+          dept: data.dept,
+          year: data.year,
           paymentId: response.razorpay_payment_id
         })
       })
       .then(res => res.json())
       .then(data => {
         if (!data.success) {
-          alert("❌ Slots Full for this event. Payment will be refunded.");
+          alert("❌ Slots Full for this workshop. Payment will be refunded.");
           statusDiv.innerText = "Slots full";
           return;
         }

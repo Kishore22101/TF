@@ -26,8 +26,22 @@ body {
 }
 
 .logo img {
-  height: 50px;
+  height: 85px;
   filter: drop-shadow(0 0 6px red);
+}
+
+.center-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.center-logo img {
+  height: 75px;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
 }
 
 .nav-links {
